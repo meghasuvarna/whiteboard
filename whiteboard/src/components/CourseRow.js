@@ -1,18 +1,21 @@
 import React from 'react';
-import {BrowserRouter as Link} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+import CourseTable from "../container/CourseTable";
 
 
 export default  class CourseRow extends React.Component {
     constructor(props){
         super(props);
-        this.state= {} ;
+        this.state= {};
 
     }
     render() {return <tr>
         <td>
-            <Link to={`/course/edit/${this.props.course.id}`}>
+
+            <a href ={`/edit/${this.props.course.id}`}>
                 {this.props.course.title}
-            </Link>
+            </a>
+
         </td>
         <td>
             Me

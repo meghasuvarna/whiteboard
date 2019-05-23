@@ -10,6 +10,7 @@ export default  class NavBar extends React.Component {
     }
     render() {
         return(
+            
 
         <nav className="navbar navbar-dark bg-primary">
             <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">

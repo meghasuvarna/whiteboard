@@ -1,35 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import CourseGrid from './CourseGrid';
 import CourseTable from './CourseTable'
+import CourseRow from './CourseTable'
 import NavBar from '../components/NavBar'
-
-let courses = require('../data.json');
-console.log(courses[0]);
+import  CourseNameHeader from '../components/CourseNameHeader'
+import CourseEditor from "./CourseEditor";
+import homePage from '../components/homePage';
 
 export default class WhiteBoard extends React.Component{
 
-
-    constructor(props) {
-        super(props);
-        this.state = { selectedCourse: courses[0] } };
-
-
-
-    selectCourse = (course) => this.setState({selectedCourse: course});
-
     render() {
-        return <Router>
+        return (
             <div>
-                <NavBar/>
-                <Link to="/course/table"> Table </Link>
-                <Link to="/course/grid"> Grid </Link>
-                <Route path="/course/table"
-                       render={() => <CourseTable selectCourse={this.selectCourse} courses={courses}/>}/>
-               <Route path="/course/grid"
-                      render={ () => <CourseGrid  selectCourse={this.selectCourse} courses={courses}/>}/>
-            </div>
-        </Router>
+
+                <Router>
+                <Switch>
+                    <Route exact path = "/" component = {homePage} />
+                    <Route path={`/edit/:courseId`}
+                           component ={CourseEditor}/>
+                </Switch>
+                </Router>
+
+            </div>)
+
     }
 }
