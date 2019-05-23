@@ -1,6 +1,6 @@
 import React from 'react';
 import CourseCard from '../components/CourseCard';
-import CourseRow from "../components/CourseRow";
+
 
 let courses = require('../data.json');
 

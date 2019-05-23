@@ -7,12 +7,41 @@ export default  class ModuleList extends React.Component {
     constructor(props) {
         super(props);
         console.log(this.props);
-        // this.state = ({
-        //     moduleId:
-        // });
+        this.state = {
+            module : {
+                id :-1,
+                title: "New Module"
+
+
+            },
+            modules: this.props.modules
+        };
+        this.createModule = this.createModule.bind(this);
+        this.deleteModule = this.deleteModule.bind(this);
+        this.valueChanged = this.valueChanged.bind(this);
     }
 
-    componentDidMount() {
+    createModule = () => {
+            this.state.module.id = (new Date()).getTime()
+            this.setState( {modules: [...this.state.modules, this.state.module]})
+    }
+
+    valueChanged = (event) => {
+
+        this.setState( {module:  {id :(new Date()).getTime(),
+            title: event.target.value}})
+    }
+
+    renderListOfModules = () => {
+        return (this.state.modules)
+
+    }
+
+    deleteModule = (id) => {
+
+        this.setState({
+            modules: this.state.modules.filter(module => module.id !== id)
+        })
     }
 
 
@@ -21,14 +50,28 @@ export default  class ModuleList extends React.Component {
 
 
             <nav id="sidebar">
+
                 <div className="sidebar-header">
                     <h3>Course Name</h3>
                 </div>
+                <div>
+                    <form className="form-inline ml-auto">
+                        <div className="col-xs-4">
+                            <input type="text"  defaultValue={this.state.module.title} onChange={this.valueChanged}
+                                   className="form-control mr-sm-2 float-left" placeholder="Add new module">
+                            </input>
+                        </div>
+
+                        <i className="fa fa-plus" onClick={this.createModule} aria-hidden="true"></i>
+                    </form>
+                </div>
                 <ul className="list-group">
-                    { this.props.modules.map((module, key) =>
+                    { this.renderListOfModules().map((module) =>
                         <ModuleListItem
+                            deleteModule = {this.deleteModule}
+                            selectModule = {this.props.selectModule}
                             module={module}
-                            key={key}/>)}
+                            key={module.id}/>)}
                 </ul>
 
             </nav>

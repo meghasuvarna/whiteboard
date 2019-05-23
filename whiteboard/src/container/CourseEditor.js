@@ -13,27 +13,34 @@ export default  class CourseEditor extends React.Component {
 
 
         this.state = {
-            selectedCourse: this.courseService.findCourseById(this.courseId)
+            selectedCourse: this.courseService.findCourseById(this.courseId),
+            selectedModule:this.courseService.findCourseById(this.courseId).modules[0],
+            selectedLesson:null,
+            selectedTopic:null
                     }
-        console.log(this.state.selectedCourse.modules);
+        this.selectModule = this.selectModule.bind(this);
     }
 
-    // selectModule = module =>
-    //     this.setState(
-    //         {  selectedModule: module,
-    //                 selectedLesson: module.lessons[0],: module.lessons[0].topics[0]
-    //         });
+    selectModule = module =>
+   //console.log(module.lessons[0]);
+        this.setState(
+            {  selectedModule: module,
+                    selectedLesson: module.lessons[0],
+                    selectedTopic: module.lessons[0].topics[0]
+            });
 
     render() {
         return(
             <div className="row">
 
-                <div className="col-3">
+                <div className="col-4 left">
                     <ModuleList modules=
-                                    {this.state.selectedCourse.modules}/></div>
-                <div className="col-3">
-                    {/*<LessonTabs lessons={this.state.selectedCourse.modules}/>*/}
-                    {/*<TopicPills topics={this.state.selectedCourse}/>*/}
+                                    {this.state.selectedCourse.modules} selectModule={this.selectModule}/>
+                </div>
+                <div className="col-8 right">
+                    <LessonTabs lessons={this.state.selectedModule.lessons}/>
+                    <br/>
+                    <TopicPills topics={this.state.selectedTopic}/>
                 </div>
             </div>
         )}

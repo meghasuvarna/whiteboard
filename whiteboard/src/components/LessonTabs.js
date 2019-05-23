@@ -1,17 +1,14 @@
 import React from 'react';
 import {BrowserRouter as Link} from "react-router-dom";
+import ModuleListItem from "./ModuleListItem";
 
 
-export default  class LessonTabs extends React.Component {
-    constructor(props){
-        super(props);
-        this.state= {} ;
+const LessonTabs = ({lessons}) =>
+    <ul className="nav nav-tabs">
+        { lessons.map((lesson, index) =>
+            <li className="nav-item" key={index}>
+                <a className="nav-link">
+                    {lesson.title}</a></li>
+        )} </ul>
 
-    }
-    render() {return <tr>
-        <td>
-            ModuleList
-        </td>
-    </tr>
-    }
-}
+export default LessonTabs;

@@ -19,7 +19,7 @@ export default  class CourseNameHeader extends React.Component {
 
     render() {
         return(
-<Router>
+        <Router>
             <nav className="navbar navbar-dark bg-dark">
 
                 <label className="navbar-brand float-left black" color="black" >
@@ -59,6 +59,6 @@ export default  class CourseNameHeader extends React.Component {
                        render={ () => <CourseGrid  selectCourse={this.props.selectCourse} courses={this.props.courses}/>}/>
 
             </nav>
-</Router>)
+    </Router>)
     }
 }
