@@ -33,6 +33,7 @@ export default  class ModuleList extends React.Component {
     }
 
     renderListOfModules = () => {
+
         return (this.state.modules)
 
     }

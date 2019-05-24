@@ -1,21 +1,66 @@
 import React from 'react';
-import {BrowserRouter as Link} from "react-router-dom";
 
 
-const ModuleListItem = ({module, deleteModule, selectModule}) =>
-    <div>
-    <li className="list-group-item" >
-        <button type="button" className="list-group-item list-group-item-action" onClick={() => selectModule(module)}>
-        {module.title}
-        <span className="float-right">
-        <i className="fa fa-times" onClick={() => deleteModule(module.id)} aria-hidden="true"></i>
-        </span>
-        </button>
+
+export default class ModuleListItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {isEditMode: false, module : this.props.module}
+        this.editModule = this.editModule.bind(this);
+        this.saveModule = this.saveModule.bind(this);
+    }
+
+    editModule = () => {
+        this.setState({isEditMode: true})
+    }
+    saveModule = () => {
+
+        this.setState({isEditMode: false}
+        )
+    }
+
+    moduleNameChanged = (event) => {
+
+        this.setState( {module:  {
+                title: event.target.value}})
+
+    }
+
+    render() {
+        return (
+
+            <div>
+                <li className="list-group-item">
+                    <button    type="button" className="list-group-item list-group-item-action"
+                            onClick={() => this.props.selectModule(this.props.module)}>
+                        {this.state.isEditMode?
+
+                            <input type="text" className="form-control"
+                                       onChange={this.moduleNameChanged} value={this.state.module.title}>
+                            </input>
+                            :
+                        <label>{this.state.module.title}</label>
+                        }
+                        <span className="float-right">
+                                {
+                                    this.state.isEditMode? <i className="fa fa-check" onClick={this.saveModule}/>:
+                                    <i className="fa fa-pencil" onClick={this.editModule}/>
+                                }
+
+                            &nbsp;&nbsp;
+                            <i className="fa fa-times" onClick={() => this.props.deleteModule(this.props.module.id)} aria-hidden="true"/>
+                        </span>
+                    </button>
 
 
-    </li>
-    </div>
+                </li>
+            </div>
 
-export default ModuleListItem
+        )
+    }
+}
 
 
+
+//onclick of pencil - change to text box and done icon
+//on click of done take vaue from text box and display edit icon

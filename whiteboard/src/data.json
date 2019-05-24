@@ -49,8 +49,43 @@
             ]
           },
           {
+            "id": "22",
             "title": "CSS",
-            "topics": []
+
+            "topics": [{"title": "BOOTSTRAP",
+              "widgets": [
+                {
+                  "type": "HEADING",
+                  "size": 1,
+                  "text": "The Document Object Model"
+                },
+                {
+                  "type": "PARAGRAPH",
+                  "text": "This topic introduces the DOM"
+                },
+                {
+                  "type": "LIST",
+                  "items": "Nodes,Attributes,Tag names,IDs,Styles,Classes"
+                },
+                {
+                  "type": "IMAGE",
+                  "src": "https://picsum.photos/200"
+                },
+                {
+                  "type": "LINK",
+                  "title": "The DOM",
+                  "href": "https://en.wikipedia.org/wiki/Document_Object_Model"
+                }]},
+
+                {
+                  "title": "Font Awesome",
+                  "widgets": []
+                },
+                {
+                  "title": "Layouts",
+                  "widgets": []
+                }
+              ]
           }
         ]
       },
@@ -58,8 +93,9 @@
         "title": "Week 2",
         "id": "2",
         "lessons": [   {
+          "id": "25",
           "title": "History",
-          "id": "22",
+
           "topics": [
             {
               "title": "DOM",
@@ -99,6 +135,7 @@
           ]
         },
           {
+            "id": "26",
             "title": "XYZ",
             "topics": []
           }]
