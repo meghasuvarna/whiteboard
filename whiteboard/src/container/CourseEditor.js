@@ -107,12 +107,6 @@
 
 
             this.setState(tempState);
-
-
-
-
-
-
         }
 
         render() {
@@ -120,7 +114,7 @@
             return(
                 <div className="row">
 
-                    <div className="col-4 left">
+                    <div className="col-4 left" >
                         <ModuleList modules=
                                         {this.state.selectedCourse.modules} selectModule={this.selectModule}/>
                     </div>

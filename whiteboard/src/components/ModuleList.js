@@ -49,30 +49,34 @@ export default  class ModuleList extends React.Component {
 
 
     render() {return ( <div className="container-fluid">
-        <div className="wrapper">
+        <div className="wrapper" >
             <nav id="sidebar">
 
-                <div className="sidebar-header" style={{"backgroundColor": "#606060"}}>
+                <div className="sidebar-header">
                     <h3>Course Name</h3>
                 </div>
                 <div>
-                    <form className="form-inline ml-auto">
-                        <div className="col-xs-4">
-                            <input type="text"  defaultValue={this.state.module.title} onChange={this.valueChanged}
-                                   className="form-control mr-sm-2 float-left" placeholder="Add new module">
-                            </input>
-                        </div>
 
-                        <i className="fa fa-plus" onClick={this.createModule} aria-hidden="true"></i>
-                    </form>
+
+
+
+
                 </div>
-                <ul className="list-group">
+                <ul className="list-group" >
                     { this.renderListOfModules().map((module) =>
                         <ModuleListItem
                             deleteModule = {this.deleteModule}
                             selectModule = {this.props.selectModule}
                             module={module}
                             key={module.id}/>)}
+                    <li className="list-group-item bg-dark align-items-center">
+
+                        <input defaultValue={this.state.module.title} onChange={this.valueChanged}
+                               className="form-control form-control-lg col-lg-11 float-left"  height="10px" placeholder="Add new module">
+                        </input>&nbsp;&nbsp;
+                        <i className="fa fa-plus text-white align-content-center"onClick={this.createModule} aria-hidden="true"></i>
+
+                    </li>
                 </ul>
 
             </nav>

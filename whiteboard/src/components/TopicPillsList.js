@@ -16,7 +16,9 @@ export default  class TopicPillsList extends React.Component {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        this.setState({topic : nextProps.topic})
+        if(this.props.topic != nextProps.topic) {
+            this.setState({topic: nextProps.topic})
+        }
 
 
     }

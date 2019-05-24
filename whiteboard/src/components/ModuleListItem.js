@@ -29,8 +29,8 @@ export default class ModuleListItem extends React.Component {
     render() {
         return (
 
-            <div>
-                <li className="list-group-item">
+
+                <li className="list-group-item bg-dark">
                     <button    type="button" className="list-group-item list-group-item-action"
                             onClick={() => this.props.selectModule(this.props.module)}>
                         {this.state.isEditMode?
@@ -48,13 +48,16 @@ export default class ModuleListItem extends React.Component {
                                 }
 
                             &nbsp;&nbsp;
-                            <i className="fa fa-times" onClick={() => this.props.deleteModule(this.props.module.id)} aria-hidden="true"/>
+                            <span className="align-items-center">
+                                <i className="fa fa-times" onClick={() => this.props.deleteModule(this.props.module.id)} aria-hidden="true"/>
+                            </span>
                         </span>
+
                     </button>
 
 
                 </li>
-            </div>
+
 
         )
     }
