@@ -33,15 +33,14 @@ export default  class LessonList extends React.Component {
 
     render() {
        return (
-                <li className="nav-item" role="button"
-                    onClick={() => this.props.selectLesson(this.props.lesson)}>
+                <li className="nav-item">
                     {this.state.isEditMode?
 
                         <input type="text"
                                onChange={this.lessonNameChanged} value={this.state.lesson.title}>
                         </input>
                         :
-                        <div><a className="nav-link">
+                        <div onClick={() => this.props.selectLesson(this.props.lesson)}><a className="nav-link">
                             {this.state.lesson.title}</a>
                         </div>}
                         <span className="float-right">

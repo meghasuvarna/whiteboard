@@ -11,24 +11,23 @@ export default  class LessonTabs extends React.Component {
 
 
             },
-            lessons: this.props.lessons,
+
             module : this.props.module,
             isCreateMode: false
         };
 
-
-        this.createLesson = this.createLesson.bind(this);
-        this.deleteLesson = this.deleteLesson.bind(this);
         this.valueChanged = this.valueChanged.bind(this);
+
+
 
     }
 
     valueChanged= (event) => {
         this.setState({ lesson: {
-                id: (new Date().getDate()),
+                id: (new Date()).getTime(),
                 title: event.target.value
-            },
-        lessons: this.props.lessons})
+            }} , () => console.log("value changed", this.state.lesson))
+
 
     }
 
@@ -36,40 +35,29 @@ export default  class LessonTabs extends React.Component {
         this.setState({lessons: [...this.props.lessons, this.state.module] })
     }
 
-    createLesson= () => {
-        this.setState({isEditMode: !this.state.isEditMode})
-
-    }
-
-    deleteLesson= (id) => {
-
-         var tempState = this.state;
-         tempState.lessons = (this.props.lessons.filter(lesson => lesson.id !== id));
-         tempState.module.lessons = tempState.lessons;
-         this.setState(tempState);
-         this.props.deleteLesson(this.state.module);
-        }
-
-
-
-
-
-
-
-
-
-
 
     render() {
         return (
+            <div>
             <ul className="nav nav-tabs col-8">
-            {this.props.lessons.map((lesson) =>
+            {this.props.module.lessons.map((lesson) =>
 
                 <LessonList lesson = {lesson}
                             selectLesson={this.props.selectLesson}
-                            deleteLesson={this.deleteLesson}
+                            deleteLesson={this.props.deleteLesson}
                             key={lesson.id}/>
 
-            )} </ul>)
+            )}
+                <div className="col-xs-4">
+                    <input type="text"   onChange={this.valueChanged} value={this.state.lesson.title}
+                           className="form-control mr-sm-2 float-left" placeholder="Add new lesson">
+                    </input>
+                </div>
+                <button>
+                <i className="fa fa-plus" onClick={() => this.props.createLesson(this.state.lesson)} aria-hidden="true"/>
+            </button> </ul>
+
+
+            </div>)
     }
 }

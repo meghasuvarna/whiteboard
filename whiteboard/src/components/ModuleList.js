@@ -22,7 +22,9 @@ export default  class ModuleList extends React.Component {
     }
 
     createModule = () => {
-            this.state.module.id = (new Date()).getTime()
+
+
+            this.state.module.id = (new Date()).getTime();
             this.setState( {modules: [...this.state.modules, this.state.module]})
     }
 
@@ -48,11 +50,9 @@ export default  class ModuleList extends React.Component {
 
     render() {return ( <div className="container-fluid">
         <div className="wrapper">
-
-
             <nav id="sidebar">
 
-                <div className="sidebar-header">
+                <div className="sidebar-header" style={{"backgroundColor": "#606060"}}>
                     <h3>Course Name</h3>
                 </div>
                 <div>
