@@ -10,7 +10,7 @@ export default  class NavBar extends React.Component {
     }
     render() {
         return(
-            
+
 
         <nav className="navbar navbar-dark bg-primary">
             <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -25,7 +25,7 @@ export default  class NavBar extends React.Component {
                     <input type="text" className="form-control mr-sm-2 float-left" placeholder="New Course Title">
                         </input>
                     </div>
-                    <i className="fa fa-plus" aria-hidden="true"></i>
+                    <i className="fa fa-plus fa-2x" aria-hidden="true"></i>
                 </form>
 
         </nav>)

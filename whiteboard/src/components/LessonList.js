@@ -21,40 +21,47 @@ export default  class LessonList extends React.Component {
         this.setState( {lesson:  {
                 title: event.target.value}})
 
-    }
+    };
 
 
 
     editLesson= () => {
-        this.setState({isEditMode: !this.state.isEditMode})
-    }
+        this.setState({isEditMode: true})
+    };
+
+    saveLesson= () => {
+        this.setState({isEditMode: false})
+    };
 
 
 
     render() {
        return (
-                <li className="nav-item">
+                <li className="nav-item" >
                     {this.state.isEditMode?
+                        <span className="d-inline-block">
+                            <input type="text" className="form-control"
+                                   onChange={this.lessonNameChanged} value={this.state.lesson.title}>
+                            </input>
+                           &nbsp;
+                                <i className="fa fa-check" onClick={this.saveLesson} />
 
-                        <input type="text"
-                               onChange={this.lessonNameChanged} value={this.state.lesson.title}>
-                        </input>
+                        </span>
                         :
-                        <div onClick={() => this.props.selectLesson(this.props.lesson)}><a className="nav-link">
-                            {this.state.lesson.title}</a>
-                        </div>}
-                        <span className="float-right">
+                        <div onClick={() => this.props.selectLesson(this.props.lesson)}>
+                            <span className="nav-link">
+                            {this.state.lesson.title}
+                                &nbsp;&nbsp;
+                            <span className="float-right">
                                 {
-                                    this.state.isEditMode? <i className="fa fa-check" onClick={this.editLesson}/>:
                                         <i className="fa fa-pencil" onClick={this.editLesson}/>
                                 }
 
-                        &nbsp;&nbsp;
-                        <i className="fa fa-times" onClick={() => this.props.deleteLesson(this.props.lesson.id)} aria-hidden="true"/>
+                                &nbsp;&nbsp;
+                                <i className="fa fa-times" onClick={() => this.props.deleteLesson(this.props.lesson.id)} aria-hidden="true"/>
                         </span>
-
-
-
+                        </span>
+                        </div>}
                 </li>
 
         )

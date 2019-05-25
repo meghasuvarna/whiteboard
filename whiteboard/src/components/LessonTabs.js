@@ -38,8 +38,9 @@ export default  class LessonTabs extends React.Component {
 
     render() {
         return (
-            <div>
-            <ul className="nav nav-tabs col-8">
+            <div className="row">
+            <div className="col-8 bg-dark" style={{"paddingLeft": "0px"}}>
+            <ul className="nav nav-tabs bg-dark text-white" style={{"paddingTop": "2rem"}}>
             {this.props.module.lessons.map((lesson) =>
 
                 <LessonList lesson = {lesson}
@@ -48,16 +49,20 @@ export default  class LessonTabs extends React.Component {
                             key={lesson.id}/>
 
             )}
-                <div className="col-xs-4">
-                    <input type="text"   onChange={this.valueChanged} value={this.state.lesson.title}
+
+             </ul>
+            </div>
+            <div className="col-4 bg-dark" style={{"paddingRight": "0px", "paddingTop": "20px"}}>
+
+                    <input onChange={this.valueChanged} value={this.state.lesson.title}
                            className="form-control mr-sm-2 float-left" placeholder="Add new lesson">
                     </input>
-                </div>
-                <button>
-                <i className="fa fa-plus" onClick={() => this.props.createLesson(this.state.lesson)} aria-hidden="true"/>
-            </button> </ul>
 
 
-            </div>)
+                <i className="fa fa-plus fa-2x float-left text-white" onClick={() => this.props.createLesson(this.state.lesson)} aria-hidden="true"/>
+            </div>
+
+            </div>
+        )
     }
 }

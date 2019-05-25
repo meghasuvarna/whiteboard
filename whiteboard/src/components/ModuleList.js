@@ -52,7 +52,7 @@ export default  class ModuleList extends React.Component {
         <div className="wrapper" >
             <nav id="sidebar">
 
-                <div className="sidebar-header">
+                <div className="sidebar-header" style={{"padding-top": "2rem"}}>
                     <h3>Course Name</h3>
                 </div>
                 <div>
@@ -69,12 +69,14 @@ export default  class ModuleList extends React.Component {
                             selectModule = {this.props.selectModule}
                             module={module}
                             key={module.id}/>)}
-                    <li className="list-group-item bg-dark align-items-center">
+                    <li className="list-group-item bg-dark">
 
                         <input defaultValue={this.state.module.title} onChange={this.valueChanged}
                                className="form-control form-control-lg col-lg-11 float-left"  height="10px" placeholder="Add new module">
                         </input>&nbsp;&nbsp;
-                        <i className="fa fa-plus text-white align-content-center"onClick={this.createModule} aria-hidden="true"></i>
+                        <span>
+                        <i className="fa fa-plus fa-2x text-white-50 align-content-center"onClick={this.createModule} aria-hidden="true"></i>
+                        </span>
 
                     </li>
                 </ul>

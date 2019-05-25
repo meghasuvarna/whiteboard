@@ -39,26 +39,30 @@ export default  class TopicPillsList extends React.Component {
 
 
     render() {
-        console.log(this.props.topic)
         return ( <li className="nav-item">
             {this.state.isEditMode?
-
-                <input type="text"
+                <span className="d-inline-block">
+                <input type="text" className="form-control"
                        onChange={this.topicNameChanged} value={this.state.topic.title}>
                 </input>
+                    &nbsp;
+                    <i className="fa fa-check" onClick={this.editTopic} />
+
+                </span>
                 :
-                <div><a className="nav-link">
-                    {this.state.topic.title}</a>
-                </div>}
-                <span className="float-right">
+                <div><span className="nav-link">
+                    {this.state.topic.title}
+                    &nbsp;&nbsp;
+                    <span className="float-right">
                                 {
-                                    this.state.isEditMode? <i className="fa fa-check" onClick={this.editTopic}/>:
                                         <i className="fa fa-pencil" onClick={this.editTopic}/>
                                 }
 
-                &nbsp;&nbsp;
-                <i className="fa fa-times" onClick={() => this.props.deleteTopic(this.props.topic.id)} aria-hidden="true"/>
-                </span></li>)
+                        &nbsp;&nbsp;
+                        <i className="fa fa-times" onClick={() => this.props.deleteTopic(this.props.topic.id)} aria-hidden="true"/>
+                </span></span>
+                </div>}
+               </li>)
 
     }
             }

@@ -1,0 +1,46 @@
+.bg-light {
+    background-color: #393e44 !important;
+}
+
+.list-group-item {
+
+    background-color: #32323a !important;
+
+}
+
+.form-control {
+    display: initial !important;
+    width: 80% !important;
+
+}
+
+.col-8{
+    padding-left: inherit !important;
+}
+
+
+@media (min-width: 600px) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-columns {
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;
+    }
+}
+
+
+
+@media (min-width: 992px) {
+    .card-columns {
+        -webkit-column-count: 6;
+        -moz-column-count: 6;
+        column-count: 6;
+    }
+}

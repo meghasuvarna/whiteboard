@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../styles/style.css';
 
 
 
@@ -30,7 +31,7 @@ export default class ModuleListItem extends React.Component {
         return (
 
 
-                <li className="list-group-item bg-dark">
+                <li className="list-group-item  border-0">
                     <button    type="button" className="list-group-item list-group-item-action"
                             onClick={() => this.props.selectModule(this.props.module)}>
                         {this.state.isEditMode?
@@ -39,16 +40,16 @@ export default class ModuleListItem extends React.Component {
                                        onChange={this.moduleNameChanged} value={this.state.module.title}>
                             </input>
                             :
-                        <label>{this.state.module.title}</label>
+                        <label className= "text-white-50">{this.state.module.title}</label>
                         }
-                        <span className="float-right">
+                        <span className="float-right text-white-50">
                                 {
                                     this.state.isEditMode? <i className="fa fa-check" onClick={this.saveModule}/>:
                                     <i className="fa fa-pencil" onClick={this.editModule}/>
                                 }
 
                             &nbsp;&nbsp;
-                            <span className="align-items-center">
+                            <span className="text-white-50">
                                 <i className="fa fa-times" onClick={() => this.props.deleteModule(this.props.module.id)} aria-hidden="true"/>
                             </span>
                         </span>

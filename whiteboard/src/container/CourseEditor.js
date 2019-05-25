@@ -3,6 +3,7 @@
     import ModuleList from '../components/ModuleList';
     import LessonTabs from '../components/LessonTabs';
     import TopicPills from '../components/TopicPills';
+    import lessonTabcss from '../styles/LessonTab.css';
 
     export default  class CourseEditor extends React.Component {
         constructor(props){
@@ -114,11 +115,11 @@
             return(
                 <div className="row">
 
-                    <div className="col-4 left" >
+                    <div className="col-4 left bg-dark text-white" >
                         <ModuleList modules=
                                         {this.state.selectedCourse.modules} selectModule={this.selectModule}/>
                     </div>
-                    <div className="col-8 right">
+                    <div className="col-8 right" style={{"padding-right": "inherit"}}>
                         <LessonTabs lessons={this.state.selectedModule.lessons}  module={this.state.selectedModule}
                                     selectLesson={this.selectLesson}
                                     createLesson={ this.createLesson}
