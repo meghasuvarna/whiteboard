@@ -62,13 +62,13 @@ export default  class TopicPills extends React.Component {
 
                     )}
                     <div className="col-xs-4">
-                        <input type="text"   onChange={this.valueChanged} value={this.state.topic.title}
-                               className="form-control mr-sm-2 float-left" placeholder="Add new lesson">
+                        <input id="topicFieldId"type="text"  style={{"width":"95%"}} onChange={this.valueChanged} value={this.state.topic.title}
+                               className="form-control topicFieldIdWidth mr-sm-2 float-left" placeholder="Add new topic">
                         </input>
                     </div>
-                    <button>
-                        <i className="fa fa-plus" onClick={() => this.props.createTopic(this.state.topic)} aria-hidden="true"/>
-                    </button> </ul>
+
+                        <i className="fa fa-2x fa-plus" style={{"paddingTop":"4px"}} onClick={() => this.props.createTopic(this.state.topic)} aria-hidden="true"/>
+                    </ul>
 
 
             </div>)

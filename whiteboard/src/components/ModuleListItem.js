@@ -31,8 +31,11 @@ export default class ModuleListItem extends React.Component {
         return (
 
 
-                <li className="list-group-item  border-0">
-                    <button    type="button" className="list-group-item list-group-item-action"
+                <li className="list-group-item border-0">
+                    <button type="button" className= {
+                        this.props.selectedModule === this.props.module ?
+                            "list-group-item active list-group-item-action" : "list-group-item list-group-item-action"
+                    }
                             onClick={() => this.props.selectModule(this.props.module)}>
                         {this.state.isEditMode?
 
@@ -40,16 +43,16 @@ export default class ModuleListItem extends React.Component {
                                        onChange={this.moduleNameChanged} value={this.state.module.title}>
                             </input>
                             :
-                        <label className= "text-white-50">{this.state.module.title}</label>
+                        <label className= "text-black">{this.state.module.title}</label>
                         }
-                        <span className="float-right text-white-50">
+                        <span className="float-right text-black">
                                 {
                                     this.state.isEditMode? <i className="fa fa-check" onClick={this.saveModule}/>:
                                     <i className="fa fa-pencil" onClick={this.editModule}/>
                                 }
 
                             &nbsp;&nbsp;
-                            <span className="text-white-50">
+                            <span className="text-black">
                                 <i className="fa fa-times" onClick={() => this.props.deleteModule(this.props.module.id)} aria-hidden="true"/>
                             </span>
                         </span>

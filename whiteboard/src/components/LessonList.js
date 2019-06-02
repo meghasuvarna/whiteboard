@@ -49,7 +49,7 @@ export default  class LessonList extends React.Component {
                         </span>
                         :
                         <div onClick={() => this.props.selectLesson(this.props.lesson)}>
-                            <span className="nav-link">
+                            <span className={this.props.selectedLesson === this.props.lesson ?"nav-link active":"nav-link"}>
                             {this.state.lesson.title}
                                 &nbsp;&nbsp;
                             <span className="float-right">

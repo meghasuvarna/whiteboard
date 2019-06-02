@@ -1,7 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Link} from "react-router-dom";
 import ModuleListItem from '../components/ModuleListItem';
-// mport Style from '../styles/style.css';
 
 export default  class ModuleList extends React.Component {
     constructor(props) {
@@ -52,7 +50,7 @@ export default  class ModuleList extends React.Component {
         <div className="wrapper" >
             <nav id="sidebar">
 
-                <div className="sidebar-header" style={{"padding-top": "2rem"}}>
+                <div className="sidebar-header" style={{"paddingTop": "2rem"}}>
                     <h3>Course Name</h3>
                 </div>
                 <div>
@@ -62,20 +60,21 @@ export default  class ModuleList extends React.Component {
 
 
                 </div>
-                <ul className="list-group" >
+                <ul className="list-group"  >
                     { this.renderListOfModules().map((module) =>
                         <ModuleListItem
                             deleteModule = {this.deleteModule}
                             selectModule = {this.props.selectModule}
+                            selectedModule = {this.props.selectedModule}
                             module={module}
                             key={module.id}/>)}
-                    <li className="list-group-item bg-dark">
+                    <li className="list-group-item bg-white" style={{"paddingRight": "0px"}}>
 
                         <input defaultValue={this.state.module.title} onChange={this.valueChanged}
                                className="form-control form-control-lg col-lg-11 float-left"  height="10px" placeholder="Add new module">
                         </input>&nbsp;&nbsp;
                         <span>
-                        <i className="fa fa-plus fa-2x text-white-50 align-content-center"onClick={this.createModule} aria-hidden="true"></i>
+                        <i className="fa fa-plus fa-2x  align-content-center" style={{"color":"black","paddingTop": "10px"}} onClick={this.createModule} aria-hidden="true"/>
                         </span>
 
                     </li>

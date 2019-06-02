@@ -45,6 +45,7 @@ export default  class LessonTabs extends React.Component {
 
                 <LessonList lesson = {lesson}
                             selectLesson={this.props.selectLesson}
+                            selectedLesson={this.props.selectedLesson}
                             deleteLesson={this.props.deleteLesson}
                             key={lesson.id}/>
 
@@ -59,7 +60,8 @@ export default  class LessonTabs extends React.Component {
                     </input>
 
 
-                <i className="fa fa-plus fa-2x float-left text-white" onClick={() => this.props.createLesson(this.state.lesson)} aria-hidden="true"/>
+                <i className="fa fa-plus fa-2x float-left text-white" style={{"paddingTop":"4px"}}
+                   onClick={() => this.props.createLesson(this.state.lesson)} aria-hidden="true"/>
             </div>
 
             </div>

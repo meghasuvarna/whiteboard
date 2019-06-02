@@ -1,6 +1,6 @@
 import React from 'react';
-import CourseTable from "../container/CourseTable";
-import CourseGrid from "../container/CourseGrid";
+import CourseTable from "./CourseTable";
+import CourseGrid from "./CourseGrid";
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 
 
