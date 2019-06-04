@@ -88,11 +88,11 @@ export default class HeadingWidget extends React.Component {
                             <option value="YouTube">Link</option>
                     </select>
                         <span>&nbsp;&nbsp;</span>
-                    <button type="button" className="btn btn-warning float-right btnMargin">
+                     <button type="button" className="btn btn-warning float-right btnMargin" onClick={() => this.props.moveUpWidget(this.state.widget)}>
                         <i className="fa fa-angle-up"></i>
                     </button>
-                         <span>&nbsp;&nbsp;</span>
-                    <button type="button" className="btn btn-warning float-right btnMargin">
+
+                    <button type="button" className="btn btn-warning float-right btnMargin" onClick={() => this.props.moveDownWidget(this.state.widget)}>
                         <i className="fa fa-angle-down"></i></button>
                           <span>&nbsp;&nbsp;</span>
                     </span>

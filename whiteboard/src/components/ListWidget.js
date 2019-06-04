@@ -81,12 +81,11 @@ export default class ListWidget extends React.Component {
                         <option value="Image">Image</option>
                         <option value="Link">Link</option>
                     </select>
-
-                    <button type="button" className="btn btn-warning float-right btnMargin">
+                    <button type="button" className="btn btn-warning float-right btnMargin" onClick={() => this.props.moveUpWidget(this.state.widget)}>
                         <i className="fa fa-angle-up"></i>
                     </button>
 
-                    <button type="button" className="btn btn-warning float-right btnMargin">
+                    <button type="button" className="btn btn-warning float-right btnMargin" onClick={() => this.props.moveDownWidget(this.state.widget)}>
                         <i className="fa fa-angle-down"></i></button>
                 </div>
                 <br/>

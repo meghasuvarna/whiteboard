@@ -4,6 +4,8 @@ import ListWidget from  '../components/ListWidget'
 import LinkWidget from  '../components/LinkWidget'
 import ImageWidget from  '../components/ImageWidget'
 import ParagraphWidget from  '../components/ParagraphWidget'
+
+
 export default class WidgetListComponent extends React.Component {
 
     constructor(props) {
@@ -12,20 +14,28 @@ export default class WidgetListComponent extends React.Component {
     }
 
 
-
-
     renderWidgets = widget =>{
         switch (widget.type) {
            case "Heading" : return <HeadingWidget widget={widget} deleteWidget={this.props.deleteWidget}
-                                                  updateWidget={this.props.updateWidget}/>
+                                                  updateWidget={this.props.updateWidget}
+                                                  moveUpWidget={this.props.moveUpWidget}
+                                                  moveDownWidget={this.props.moveDownWidget}/>
            case "Paragraph" : return <ParagraphWidget widget={widget} deleteWidget={this.props.deleteWidget}
-                                                      updateWidget={this.props.updateWidget}/>
+                                                      updateWidget={this.props.updateWidget}
+                                                      moveUpWidget={this.props.moveUpWidget}
+                                                      moveDownWidget={this.props.moveDownWidget}/>
            case "List" : return <ListWidget widget={widget} deleteWidget={this.props.deleteWidget}
-                                                            updateWidget={this.props.updateWidget}/>
+                                                            updateWidget={this.props.updateWidget}
+                                                            moveUpWidget={this.props.moveUpWidget}
+                                                            moveDownWidget={this.props.moveDownWidget}/>
            case "Image" : return <ImageWidget widget={widget} deleteWidget={this.props.deleteWidget}
-                                                                updateWidget={this.props.updateWidget}/>
+                                                                updateWidget={this.props.updateWidget}
+                                                                  moveUpWidget={this.props.moveUpWidget}
+                                                                  moveDownWidget={this.props.moveDownWidget}/>
            case "YouTube" : return <LinkWidget widget={widget} deleteWidget={this.props.deleteWidget}
-                                                            updateWidget={this.props.updateWidget}/>
+                                                            updateWidget={this.props.updateWidget}
+                                                               moveUpWidget={this.props.moveUpWidget}
+                                                               moveDownWidget={this.props.moveDownWidget}/>
 
 
         }
@@ -52,6 +62,7 @@ export default class WidgetListComponent extends React.Component {
                 )
                 }
             </ul>
+
                 <div className="float-right">
                 <i className="fa fa-3x fa-plus-circle" onClick={this.props.addWidget}/>
                 </div>

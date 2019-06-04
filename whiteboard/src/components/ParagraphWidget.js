@@ -73,12 +73,12 @@ export default class ParagraphWidget extends React.Component {
                             <option value="YouTube">Link</option>
                         </select>
 
-                    <button type="button" className="btn btn-warning float-right btnMargin">
-                        <i className="fa fa-angle-up"></i>
-                    </button>
+                        <button type="button" className="btn btn-warning float-right btnMargin" onClick={() => this.props.moveUpWidget(this.state.widget)}>
+                            <i className="fa fa-angle-up"></i>
+                        </button>
 
-                    <button type="button" className="btn btn-warning float-right btnMargin">
-                        <i className="fa fa-angle-down"></i></button>
+                        <button type="button" className="btn btn-warning float-right btnMargin" onClick={() => this.props.moveDownWidget(this.state.widget)}>
+                            <i className="fa fa-angle-down"></i></button>
                     </div>
                 <br/>
 
