@@ -36,6 +36,12 @@
 .btnMargin {
     margin-right: 8px !important;
 }
+
+.navtabCss {
+    padding-left: 15px!important;
+    border-bottom-color: #343a40 !important;
+    padding-top: 2rem !important;
+}
 @media (min-width: 600px) {
     .card-columns {
         -webkit-column-count: 2;

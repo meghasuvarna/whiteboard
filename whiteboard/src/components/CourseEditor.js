@@ -120,12 +120,12 @@
             return(
                 <div className="row">
 
-                    <div className="col-4 left bg-dark text-white" >
+                    <div className="col-4 left bg-dark text-white"  style={{"minHeight":"-webkit-fill-available"}}>
                         <ModuleList modules=
                                         {this.state.selectedCourse.modules} selectModule={this.selectModule}
                                     selectedModule={this.state.selectedModule}/>
                     </div>
-                    <div className="col-7 right" >
+                    <div className="col-8 right" >
                         <LessonTabs lessons={this.state.selectedModule.lessons}  module={this.state.selectedModule}
                                     selectLesson={this.selectLesson}
                                     selectedLesson = {this.state.selectedLesson}

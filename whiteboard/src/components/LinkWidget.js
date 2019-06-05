@@ -16,13 +16,13 @@ export default class LinkWidget extends React.Component {
     urlChanged = event => {
         let tempWidget = {...this.state.widget};
         tempWidget.url = event.target.value;
-        this.setState({widget: tempWidget});
+        this.setState({widget: tempWidget}, () => this.props.updateWidget(this.state.widget));
     }
 
     urlTextChanged = event => {
         let tempWidget = {...this.state.widget};
         tempWidget.text = event.target.value;
-        this.setState({widget: tempWidget});
+        this.setState({widget: tempWidget}, () => this.props.updateWidget(this.state.widget));
     }
 
     widgetTypeChanged = event => {
@@ -69,54 +69,53 @@ export default class LinkWidget extends React.Component {
         return(
 
             <div>
-                <div>
+                { !this.props.isPreview && <div>
+                    <div>
 
-                    <h1 className="heading">Link Widget</h1>
+                        <h1 className="heading">Link Widget</h1>
 
-                    <span>
-                          <span>&nbsp;&nbsp;</span>
-                    <button type="button" className="btn btn-danger float-right btnMargin"
-                            onClick={() => this.props.deleteWidget(this.props.widget.id)}>
-                        <i className="fa fa-times "></i></button>
-                    <select className="form-control form-control-lg col-lg-12 float-right
-                     widgetTypeDropDown btnMargin" height="10px" value="YouTube" onChange={this.widgetTypeChanged}>
-                            <option value="Heading">Heading </option>
-                            <option value="Paragraph">Paragraph</option>
-                            <option value="List">List</option>
-                            <option value="Image">Image</option>
-                            <option value="YouTube">Link</option>
-                    </select>
-                        <span>&nbsp;&nbsp;</span>
-                     <button type="button" className="btn btn-warning float-right btnMargin" onClick={() => this.props.moveUpWidget(this.state.widget)}>
-                        <i className="fa fa-angle-up"></i>
-                    </button>
+                        <span>
+                              <span>&nbsp;&nbsp;</span>
+                        <button type="button" className="btn btn-danger float-right btnMargin"
+                                onClick={() => this.props.deleteWidget(this.props.widget.id)}>
+                            <i className="fa fa-times "></i></button>
+                        <select className="form-control form-control-lg col-lg-12 float-right
+                         widgetTypeDropDown btnMargin" height="10px" value="YouTube" onChange={this.widgetTypeChanged}>
+                                <option value="Heading">Heading </option>
+                                <option value="Paragraph">Paragraph</option>
+                                <option value="List">List</option>
+                                <option value="Image">Image</option>
+                                <option value="YouTube">Link</option>
+                        </select>
+                            <span>&nbsp;&nbsp;</span>
+                         <button type="button" className="btn btn-warning float-right btnMargin" onClick={() => this.props.moveUpWidget(this.state.widget)}>
+                            <i className="fa fa-angle-up"></i>
+                        </button>
 
-                    <button type="button" className="btn btn-warning float-right btnMargin" onClick={() => this.props.moveDownWidget(this.state.widget)}>
-                        <i className="fa fa-angle-down"></i></button>
-                          <span>&nbsp;&nbsp;</span>
-                    </span>
-
-
-                </div>
-                <br/>
-                <input  className="form-control form-control-lg col-lg-12 float-left widgetTextbox
-                "height="10px" onChange={this.urlChanged} placeholder="Link URL"
-                        value={this.state.widget.url}
-                />
-
-                <input  className="form-control form-control-lg col-lg-12 float-left widgetTextbox
-                "height="10px" onChange={this.urlTextChanged} placeholder="Link Text"
-                        value={this.state.widget.text}
-                />
+                        <button type="button" className="btn btn-warning float-right btnMargin" onClick={() => this.props.moveDownWidget(this.state.widget)}>
+                            <i className="fa fa-angle-down"></i></button>
+                              <span>&nbsp;&nbsp;</span>
+                        </span>
 
 
+                    </div>
+                    <br/>
+                    <input  className="form-control form-control-lg col-lg-12 float-left widgetTextbox
+                    "height="10px" onChange={this.urlChanged} placeholder="Link URL"
+                            value={this.state.widget.url}
+                    />
 
-                <input  className="form-control form-control-lg col-lg-12 float-left widgetTextbox
-                "height="10px"  placeholder="Widget Name"
+                    <input  className="form-control form-control-lg col-lg-12 float-left widgetTextbox
+                    "height="10px" onChange={this.urlTextChanged} placeholder="Link Text"
+                            value={this.state.widget.text}
+                    />
 
-                />
-                <br/>
-                <h2>Preview</h2>
+
+
+
+                    <br/>
+                    <h2>Preview</h2>
+                </div> }
                 <a href={this.state.widget.url}> {this.state.widget.text}</a>
             </div >
 

@@ -54,7 +54,7 @@ export default class ListWidget extends React.Component {
     textChanged = event => {
         let tempWidget = {...this.state.widget};
         tempWidget.text = event.target.value;
-        this.setState({widget: tempWidget});
+        this.setState({widget: tempWidget}, () => this.props.updateWidget(this.state.widget));
     }
 
     orderChanged = event => {
@@ -64,10 +64,10 @@ export default class ListWidget extends React.Component {
     }
 
     render() {
-        console.log(this.state.widget.text);
-        console.log(this.state.orderType);
+
         return(
             <div>
+                {!this.props.isPreview && <div>
                 <div>
                     <h1 className="heading">List Widget</h1>
 
@@ -101,10 +101,10 @@ export default class ListWidget extends React.Component {
 
                 </select>
 
-                <input  className="form-control form-control-lg col-lg-12 float-left widgetTextbox
-                "height="10px"  placeholder="Widget Name"/>
+
                 <br/>
                 <h2>Preview</h2>
+                </div>}
                 {
                     this.state.orderType=== "ol" &&
                     <ol>

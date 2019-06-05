@@ -5,7 +5,8 @@ import WidgetService from "../services/WidgetService";
 const widgetService = new WidgetService();
 
 const stateToPropertyMapper = state => ({
-    widgets: state.widgets
+    widgets: state.widgets,
+    isPreview: state.isPreview
 
 });
 
@@ -23,16 +24,23 @@ const dispatcherToPropertyMapper = dispatch => ({
         })),
 
     addWidget: () => widgetService.createWidget()
-        .then(widgets => dispatch({
+        .then(widget => dispatch({
             type: 'CREATE_WIDGET',
-            widgets: widgets
+            widget: widget
         })),
-    updateWidget: (widget) => {
+    saveWidget: (widgets) => {
+        widgets.map(widget =>
         widgetService.updateWidget(widget.id, widget)
         .then(widgets => dispatch({
-            type: 'UPDATE_WIDGET',
+            type: 'SAVE_ALL',
             widgets: widgets
-        }))},
+        })))},
+    updateWidget: (widget, widgets) =>
+        dispatch({
+                type: 'UPDATE_WIDGET',
+                widget: widget,
+                widgets: widgets
+            }),
     moveUpWidget: (widget) => dispatch({
                 type: 'MOVE_UP',
                 widget: widget
@@ -40,6 +48,9 @@ const dispatcherToPropertyMapper = dispatch => ({
     moveDownWidget: (widget) => dispatch({
         type: 'MOVE_DOWN',
         widget: widget
+    }),
+    handlePreview: () => dispatch({
+        type: 'HANDLE_PREVIEW'
     })
 
 });

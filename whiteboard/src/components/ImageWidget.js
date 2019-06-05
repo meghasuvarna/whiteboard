@@ -16,14 +16,14 @@ export default class ImageWidget extends React.Component {
     urlChanged = event => {
         let tempWidget = {...this.state.widget};
         tempWidget.url = event.target.value;
-        this.setState({widget: tempWidget});
+        this.setState({widget: tempWidget}, () => this.props.updateWidget(this.state.widget));
     }
 
-    urlTextChanged = event => {
-        let tempWidget = {...this.state.widget};
-        tempWidget.text = event.target.value;
-        this.setState({widget: tempWidget});
-    }
+    // urlTextChanged = event => {
+    //     let tempWidget = {...this.state.widget};
+    //     tempWidget.text = event.target.value;
+    //     this.setState({widget: tempWidget}, () => this.props.updateWidget(this.state.widget));
+    // }
 
     widgetTypeChanged = event => {
         let tempWidget = {...this.state.widget};
@@ -69,6 +69,7 @@ export default class ImageWidget extends React.Component {
         return(
 
             <div>
+                {!this.props.isPreview && <div>
                 <div>
 
                     <h1 className="heading">Image Widget</h1>
@@ -104,11 +105,11 @@ export default class ImageWidget extends React.Component {
                         value={this.state.widget.url}/>
 
 
-                <input  className="form-control form-control-lg col-lg-12 float-left widgetTextbox
-                "height="10px"  placeholder="Widget Name"/>
+
                 <br/>
 
                 <h2>Preview</h2>
+                </div>}
                 <img src={this.state.widget.url}></img>
             </div >
 

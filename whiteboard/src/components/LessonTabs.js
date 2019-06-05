@@ -40,7 +40,7 @@ export default  class LessonTabs extends React.Component {
         return (
             <div className="row">
             <div className="col-8 bg-dark" style={{"paddingLeft": "0px"}}>
-            <ul className="nav nav-tabs bg-dark text-white" style={{"paddingTop": "2rem"}}>
+            <ul className="nav nav-tabs bg-dark text-white navtabCss">
             {this.props.module.lessons.map((lesson) =>
 
                 <LessonList lesson = {lesson}

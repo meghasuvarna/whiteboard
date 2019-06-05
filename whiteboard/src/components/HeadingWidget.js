@@ -15,7 +15,8 @@ export default class HeadingWidget extends React.Component {
     headingSizeChanged = event => {
         let tempWidget = {...this.state.widget};
         tempWidget.size = event.target.value;
-        this.setState({widget: tempWidget});
+        this.setState({widget: tempWidget},() => this.props.updateWidget(this.state.widget));
+
 
     }
 
@@ -24,7 +25,7 @@ export default class HeadingWidget extends React.Component {
     headingTextChanged = event => {
         let tempWidget = {...this.state.widget};
         tempWidget.text = event.target.value;
-        this.setState({widget: tempWidget});
+        this.setState({widget: tempWidget}, () => this.props.updateWidget(this.state.widget));
     }
 
     widgetTypeChanged = event => {
@@ -70,6 +71,7 @@ export default class HeadingWidget extends React.Component {
         return(
 
             <div>
+                {!this.props.isPreview && <div>
                 <div>
 
                     <h1 className="heading">Heading Widget</h1>
@@ -88,36 +90,39 @@ export default class HeadingWidget extends React.Component {
                             <option value="YouTube">Link</option>
                     </select>
                         <span>&nbsp;&nbsp;</span>
-                     <button type="button" className="btn btn-warning float-right btnMargin" onClick={() => this.props.moveUpWidget(this.state.widget)}>
+                     <button type="button" className="btn btn-warning float-right btnMargin"
+                             onClick={() => this.props.moveUpWidget(this.state.widget)}>
                         <i className="fa fa-angle-up"></i>
                     </button>
 
-                    <button type="button" className="btn btn-warning float-right btnMargin" onClick={() => this.props.moveDownWidget(this.state.widget)}>
+                    <button type="button" className="btn btn-warning float-right btnMargin"
+                            onClick={() => this.props.moveDownWidget(this.state.widget)}>
                         <i className="fa fa-angle-down"></i></button>
                           <span>&nbsp;&nbsp;</span>
                     </span>
 
 
                 </div>
+
                 <br/>
-                <input  className="form-control form-control-lg col-lg-12 float-left widgetTextbox
-                "height="10px" onChange={this.headingTextChanged} placeholder="Heading Text"
-                        value={this.state.widget.text}
+                <input className="form-control form-control-lg col-lg-12 float-left widgetTextbox
+                " height="10px" onChange={this.headingTextChanged} placeholder="Heading Text"
+                                                 value={this.state.widget.text}
                 />
 
                 <select className="form-control form-control-lg col-lg-12 float-left widgetTextbox" height="10px"
                         value={this.state.widget.size} onChange={this.headingSizeChanged}>
-                    <option value="1">Heading 1 </option>
+                    <option value="1">Heading 1</option>
                     <option value="2">Heading 2</option>
                     <option value="3">Heading 3</option>
                 </select>
 
-                <input  className="form-control form-control-lg col-lg-12 float-left widgetTextbox
-                "height="10px"  placeholder="Widget Name"
 
-                />
                 <br/>
+
                 <h2>Preview</h2>
+                </div>
+                }
                 {
                     (this.state.widget.size === 1 || this.state.widget.size === "1") &&
                     <h1>{this.state.widget.text}</h1>
